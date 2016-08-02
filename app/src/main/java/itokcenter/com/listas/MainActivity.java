@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     public void agregarLista() {
         listaRC.add(new ItemRC(R.mipmap.ic_launcher, textInputLayout.getEditText().getText().toString()));
         recyclerAdapter.notifyDataSetChanged();
+        textInputLayout.getEditText().setText("");
         Snackbar.make(coordinatorLayout, "Se ha agregado " + textInputLayout.getEditText().getText().toString(), Snackbar.LENGTH_LONG)
                 .setAction("Actualizar", new View.OnClickListener() {
                     @Override
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         recyclerAdapter.notifyDataSetChanged();
                     }
                 })
-                .setActionTextColor(Color.BLUE)
+                .setActionTextColor(Color.MAGENTA)
                 .show();
     }
 }
