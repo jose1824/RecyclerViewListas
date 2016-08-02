@@ -1,6 +1,10 @@
 package itokcenter.com.listas;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +38,25 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-
+    public void onBindViewHolder(final RecyclerViewHolder holder, final int position) {
+        holder.imageView.setImageResource(itemsRC.get(position).getImg());
+        holder.textView.setText(itemsRC.get(position).getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(context)
+                        .setIcon(itemsRC.get(position).getImg())
+                        .setTitle("Nombre")
+                        .setMessage("El nombre es " + itemsRC.get(position).getName())
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
+            }
+        });
     }
 
     @Override
