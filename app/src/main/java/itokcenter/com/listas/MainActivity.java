@@ -1,5 +1,6 @@
 package itokcenter.com.listas;
 
+import android.graphics.Color;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -10,6 +11,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
     public void agregarLista() {
         listaRC.add(new ItemRC(R.mipmap.ic_launcher, textInputLayout.getEditText().getText().toString()));
         recyclerAdapter.notifyDataSetChanged();
-        Snackbar.make(coordinatorLayout, "Se ha agregado " + textInputLayout.getEditText().getText().toString(), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(coordinatorLayout, "Se ha agregado " + textInputLayout.getEditText().getText().toString(), Snackbar.LENGTH_LONG)
+                .setAction("Actualizar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        recyclerAdapter.notifyDataSetChanged();
+                    }
+                })
+                .setActionTextColor(Color.BLUE)
+                .show();
     }
 }
