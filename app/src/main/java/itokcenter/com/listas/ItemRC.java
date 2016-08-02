@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 /**
  * Created by PC- on 02/08/2016.
  */
-public class ItemRC{
+public class ItemRC {
 
     int img;
     String name;
